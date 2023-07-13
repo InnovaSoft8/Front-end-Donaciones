@@ -7,7 +7,7 @@ import { Donacion } from '../models/donacion';
   providedIn: 'root'
 })
 export class DonacionService {
-  private apiUrl = 'URL_DEL_API'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://localhost:8080/desastres/donaciones'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) {}
 
