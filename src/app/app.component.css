@@ -1,0 +1,65 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  height: 100vh;
+}
+
+/* Estilos para la barra de navegación */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  height: 64px;
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.header span {
+  font-size: 24px;
+}
+
+/* Estilos para el menú de navegación vertical */
+.sidenav-container {
+  height: calc(100% - 64px); /* Restar el tamaño de la barra de navegación */
+}
+
+.vertical-sidenav {
+  width: 200px;
+  background-color: #f5f5f5;
+}
+
+.vertical-nav-list {
+  padding-top: 20px;
+}
+
+.mat-list-item {
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.mat-list-item:hover {
+  background-color: #ddd;
+}
+
+.mat-list-item.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.mat-sidenav-content {
+  padding: 20px;
+}
