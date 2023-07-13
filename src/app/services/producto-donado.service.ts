@@ -7,7 +7,7 @@ import { ProductoDonado } from '../models/producto-donado';
   providedIn: 'root'
 })
 export class ProductoDonadoService {
-  private apiUrl = 'URL_DEL_API'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://localhost:8080/productos-donados'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) {}
 

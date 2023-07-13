@@ -7,7 +7,7 @@ import { Patrocinador } from '../models/patrocinador';
   providedIn: 'root'
 })
 export class PatrocinadorService {
-  private apiUrl = 'URL_DEL_API'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://localhost:8080/patrocinadores'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) {}
 
