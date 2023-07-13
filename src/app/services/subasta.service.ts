@@ -7,7 +7,7 @@ import { Subasta } from '../models/subasta';
   providedIn: 'root'
 })
 export class SubastaService {
-  private apiUrl = 'URL_DEL_API'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://localhost:8080/subastas'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) {}
 

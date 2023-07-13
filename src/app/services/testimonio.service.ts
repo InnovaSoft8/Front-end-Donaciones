@@ -7,7 +7,7 @@ import { Testimonio } from '../models/testimonio';
   providedIn: 'root'
 })
 export class TestimonioService {
-  private apiUrl = 'URL_DEL_API'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://localhost:8080/testimonios'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) {}
 
