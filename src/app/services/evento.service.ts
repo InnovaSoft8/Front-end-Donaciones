@@ -7,7 +7,7 @@ import { Evento } from '../models/evento';
   providedIn: 'root'
 })
 export class EventoService {
-  private apiUrl = 'http://localhost:8080/desastres/eventos'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://localhost:8080/eventos'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) {}
 
