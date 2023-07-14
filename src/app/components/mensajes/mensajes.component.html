@@ -1,22 +1,39 @@
-<div class="messages-container">
-    <h2 class="messages-title">Mensajes</h2>
-  
-    <div class="message-list">
-      <ul>
-        <li *ngFor="let mensaje of mensajes" class="message-item">
-          <div class="message-header">
-            <span class="message-sender">
-              {{ obtenerNombreEmisor(mensaje) }}
-            </span>
-            <span class="message-date">
-              {{ mensaje.fechaHoraMensaje | date }}
-            </span>
-          </div>
-          <p class="message-content">{{ mensaje.contenidoMensaje }}</p>
-          <div class="message-footer">
-            <span class="message-state">{{ mensaje.estadoMensaje }}</span>
-          </div>
-        </li>
-      </ul>
+<div class="mensajes-container">
+  <h2 class="mensajes-title">Mensajes</h2>
+
+  <form (ngSubmit)="registrarMensaje()" class="mensajes-form">
+    <div class="form-group">
+      <label for="contenido">Contenido:</label>
+      <textarea id="contenido" name="contenido" [(ngModel)]="nuevoMensaje.contenidoMensaje" required></textarea>
     </div>
+    <div class="form-group">
+      <label for="emisor">Emisor:</label>
+      <select id="emisor" name="emisor" [(ngModel)]="nuevoMensaje.idDonante" required>
+        <option *ngFor="let donante of donantes" [value]="donante.idDonante">{{ donante.nombre }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="receptor">Receptor:</label>
+      <select id="receptor" name="receptor" [(ngModel)]="nuevoMensaje.idReceptor" required>
+        <option *ngFor="let receptor of receptores" [value]="receptor.idReceptor">{{ receptor.nombre }}</option>
+      </select>
+    </div>
+    <button type="submit" class="mensajes-button">Enviar Mensaje</button>
+    <p *ngIf="error" class="mensajes-error">{{ error }}</p>
+  </form>
+
+  <div class="mensajes-list">
+    <h3 class="mensajes-list-title">Lista de Mensajes</h3>
+    <ul>
+      <li *ngFor="let mensaje of mensajes" class="mensaje-item">
+        <p>{{ mensaje.contenidoMensaje }}</p>
+        <div class="mensaje-details">
+          <span class="mensaje-date">{{ mensaje.fechaHoraMensaje | date }}</span>
+          <span class="mensaje-emisor">Emisor: {{ obtenerNombreEmisor(mensaje.idDonante) }}</span>
+          <span class="mensaje-receptor">Receptor: {{ obtenerNombreReceptor(mensaje.idReceptor) }}</span>
+        </div>
+        <button (click)="eliminarMensaje(mensaje.idMensaje)" class="mensaje-delete-button">Eliminar</button>
+      </li>
+    </ul>
   </div>
+</div>

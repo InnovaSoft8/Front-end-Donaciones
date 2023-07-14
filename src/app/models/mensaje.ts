@@ -1,9 +1,7 @@
 export interface Mensaje {
     idMensaje: number;
-    idDonanteEmisor: number;
-    idVoluntarioEmisor: number;
-    idDonanteReceptor: number;
-    idVoluntarioReceptor: number;
+    idDonante: number;
+    idReceptor: number;
     fechaHoraMensaje: Date;
     contenidoMensaje: string;
     estadoMensaje: string;
