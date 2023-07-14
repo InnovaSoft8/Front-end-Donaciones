@@ -1,1 +1,22 @@
-<p>mensajes works!</p>
+<div class="messages-container">
+    <h2 class="messages-title">Mensajes</h2>
+  
+    <div class="message-list">
+      <ul>
+        <li *ngFor="let mensaje of mensajes" class="message-item">
+          <div class="message-header">
+            <span class="message-sender">
+              {{ obtenerNombreEmisor(mensaje) }}
+            </span>
+            <span class="message-date">
+              {{ mensaje.fechaHoraMensaje | date }}
+            </span>
+          </div>
+          <p class="message-content">{{ mensaje.contenidoMensaje }}</p>
+          <div class="message-footer">
+            <span class="message-state">{{ mensaje.estadoMensaje }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>

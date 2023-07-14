@@ -1,1 +1,50 @@
-<p>comentarios works!</p>
+<div class="comentarios-container">
+  <h2 class="comentarios-title">Comentarios</h2>
+
+  <form (ngSubmit)="registrarComentario()" class="comentarios-form">
+    <div class="form-group">
+      <label for="contenido">Contenido:</label>
+      <textarea
+        id="contenido"
+        name="contenido"
+        [(ngModel)]="nuevoComentario.contenido"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="donante">Donante:</label>
+      <select id="donante" name="donante" [(ngModel)]="nuevoComentario.idDonante" required>
+        <option *ngFor="let donante of donantes" [value]="donante.idDonante">
+          {{ donante.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="proyecto">Proyecto:</label>
+      <select id="proyecto" name="proyecto" [(ngModel)]="nuevoComentario.idProyecto" required>
+        <option *ngFor="let proyecto of proyectos" [value]="proyecto.idProyecto">
+          {{ proyecto.nombre }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="comentarios-button">Agregar Comentario</button>
+    <p *ngIf="error" class="comentarios-error">{{ error }}</p>
+  </form>
+
+  <div class="comentarios-list">
+    <h3 class="comentarios-list-title">Lista de Comentarios</h3>
+    <ul>
+      <li *ngFor="let comentario of comentarios" class="comentario-item">
+        <p>{{ comentario.contenido }}</p>
+        <div class="comentario-details">
+          <span class="comentario-date">{{ comentario.fechaHora | date }}</span>
+          <span class="comentario-donante">Donante: {{ obtenerNombreDonante(comentario.idDonante) }}</span>
+          <span class="comentario-proyecto">Proyecto: {{ obtenerNombreProyecto(comentario.idProyecto) }}</span>
+        </div>
+        <button (click)="eliminarComentario(comentario.idComentario)" class="comentario-delete-button">
+          Eliminar
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
