@@ -21,6 +21,7 @@ import { PatrocinadoresComponent } from './components/patrocinadores/patrocinado
 import { RouterModule, Routes } from '@angular/router';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { FormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar'; // Import MatToolbarModule
 
 const routes: Routes = [
   { path: 'Home', component: HomeComponent },
@@ -63,6 +64,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatListModule,
     FormsModule,
+    MatToolbarModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

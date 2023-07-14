@@ -29,4 +29,9 @@ export class DonanteService {
     const url = 'http://localhost:8080/paises'; // Replace with your API URL for getting countries
     return this.http.get<Pais[]>(url);
   }
+
+  modificarDonante(id: number, donante: Donante): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put(url, donante);
+  }
 }

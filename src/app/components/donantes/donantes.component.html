@@ -53,6 +53,20 @@
     <p *ngIf="error" class="error">{{ error }}</p>
   </form>
 
+   <!-- Agregar el campo de búsqueda -->
+   <div class="search-container">
+    <label for="busqueda" class="search-label">Buscar:</label>
+    <input
+      type="text"
+      id="busqueda"
+      name="busqueda"
+      [(ngModel)]="busqueda"
+      (input)="filtrarDonantes()"
+      class="search-input"
+    />
+  </div>
+
+  <!-- Mostrar la lista de donantes -->
   <h3 class="donation-list-title">Lista de Donantes</h3>
   <table class="donation-table">
     <thead>
@@ -66,16 +80,40 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let donante of donantes" class="donation-item">
-        <td>{{ donante.nombre }}</td>
-        <td>{{ donante.direccion }}</td>
-        <td>{{ donante.correoElectronico }}</td>
-        <td>{{ donante.telefono }}</td>
-        <td>{{ obtenerNombrePais(donante.idPais) }}</td>
-        <td>
-          <button (click)="eliminarDonante(donante.idDonante)" class="delete-button">Eliminar</button>
-        </td>
-      </tr>
+      <ng-container *ngIf="!busqueda; else donantesFiltradosBlock">
+        <tr *ngFor="let donante of donantes" class="donation-item">
+          <td>{{ donante.nombre }}</td>
+          <td>{{ donante.direccion }}</td>
+          <td>{{ donante.correoElectronico }}</td>
+          <td>{{ donante.telefono }}</td>
+          <td>{{ obtenerNombrePais(donante.idPais) }}</td>
+          <td>
+            <button
+              (click)="eliminarDonante(donante.idDonante)"
+              class="delete-button"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #donantesFiltradosBlock>
+        <tr *ngFor="let donante of donantesFiltrados" class="donation-item">
+          <td>{{ donante.nombre }}</td>
+          <td>{{ donante.direccion }}</td>
+          <td>{{ donante.correoElectronico }}</td>
+          <td>{{ donante.telefono }}</td>
+          <td>{{ obtenerNombrePais(donante.idPais) }}</td>
+          <td>
+            <button
+              (click)="eliminarDonante(donante.idDonante)"
+              class="delete-button"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </ng-template>
     </tbody>
   </table>
 </div>

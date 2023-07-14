@@ -1,65 +1,93 @@
 /* Estilos generales */
 body {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
 }
 
 .container {
-  height: 100vh;
-}
-
-/* Estilos para la barra de navegación */
-.header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  height: 64px;
-  background-color: #1976d2;
-  color: #fff;
+  height: 100%;
 }
 
-.logo {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
+/* Estilos del encabezado */
+.header {
+  background-color: #ff4f00;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  animation: slideDown 1s ease-in-out;
 }
 
 .header span {
   font-size: 24px;
 }
 
-/* Estilos para el menú de navegación vertical */
-.sidenav-container {
-  height: calc(100% - 64px); /* Restar el tamaño de la barra de navegación */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.vertical-sidenav {
+/* Estilos de la barra lateral */
+.sidenav {
+  background-color: #333;
   width: 200px;
-  background-color: #f5f5f5;
+  padding: 20px;
+  animation: slideRight 1s ease-in-out;
 }
 
 .vertical-nav-list {
-  padding-top: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.mat-list-item {
-  padding: 10px 20px;
-  color: #333;
+.vertical-nav-list li {
+  margin-bottom: 10px;
+}
+
+.vertical-nav-list li a {
+  color: white;
   text-decoration: none;
   display: block;
-  transition: background-color 0.3s ease;
+  padding: 5px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.mat-list-item:hover {
-  background-color: #ddd;
+.vertical-nav-list li a:hover {
+  background-color: #ff4f00;
 }
 
-.mat-list-item.active {
-  background-color: #4caf50;
-  color: white;
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.mat-sidenav-content {
+/* Estilos del contenido principal */
+.content {
+  flex-grow: 1;
   padding: 20px;
+  background-color: #f1f1f1;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

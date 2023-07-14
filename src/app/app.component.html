@@ -1,37 +1,34 @@
-<div class="header">
-  <span>Donaciones</span>
-</div>
+<!DOCTYPE html>
+<html>
 
-<div class="container">
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" opened class="vertical-sidenav">
-      <mat-nav-list class="vertical-nav-list">
-        <a mat-list-item routerLink="/Home" routerLinkActive="active">Home</a>
-        <a mat-list-item routerLink="/Donantes" routerLinkActive="active"
-          >Donantes</a
-        >
-        <a mat-list-item routerLink="/Receptores" routerLinkActive="active"
-          >Receptores</a
-        >
-        <a mat-list-item routerLink="/Donaciones" routerLinkActive="active"
-          >Proyectos</a
-        >
-        <a mat-list-item routerLink="/Proyectos" routerLinkActive="active"
-          >Donaciones</a
-        >
-        <a mat-list-item routerLink="/Comentarios" routerLinkActive="active"
-          >Comentarios</a
-        >
-        <a mat-list-item routerLink="/Mensajes" routerLinkActive="active"
-          >Voluntarios</a
-        >
-        <a mat-list-item routerLink="/Testimonios" routerLinkActive="active"
-          >Eventos</a
-        >
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
+<head>
+  <title>Donaciones</title>
+</head>
+
+<body>
+  <div class="header">
+    <span>Donaciones</span>
+  </div>
+
+  <div class="container">
+    <div class="sidenav">
+      <ul class="vertical-nav-list">
+        <li><a href="/Home">Home</a></li>
+        <li><a href="/Donantes">Donantes</a></li>
+        <li><a href="/Receptores">Receptores</a></li>
+        <li><a href="/Donaciones">Proyectos</a></li>
+        <li><a href="/Proyectos">Donaciones</a></li>
+        <li><a href="/Comentarios">Comentarios</a></li>
+        <li><a href="/Mensajes">Voluntarios</a></li>
+        <li><a href="/Testimonios">Eventos</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <!-- Contenido de la página -->
       <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -13,6 +13,8 @@ export class DonantesComponent implements OnInit {
   donantes: Donante[] = [];
   paises: Pais[] = [];
   error: string = '';
+  busqueda: string = '';
+  donantesFiltrados: Donante[] = [];
 
   nuevoDonante: Donante = {
     idDonante: 0,
@@ -32,6 +34,7 @@ export class DonantesComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerDonantes();
     this.obtenerPaises();
+    this.filtrarDonantes();
   }
 
   obtenerDonantes() {
@@ -87,5 +90,11 @@ export class DonantesComponent implements OnInit {
     this.donanteService.eliminarDonante(id).subscribe(() => {
       this.obtenerDonantes();
     });
+  }
+  
+  filtrarDonantes() {
+    this.donantesFiltrados = this.donantes.filter((donante) =>
+      donante.nombre.toLowerCase().includes(this.busqueda.toLowerCase())
+    );
   }
 }
