@@ -1,1 +1,14 @@
-<p>proyectos works!</p>
+<div class="proyecto-container">
+    <h2 class="proyecto-title">Proyectos</h2>
+    
+    <div class="proyecto-list">
+      <div *ngFor="let proyecto of proyectos" class="proyecto-item">
+        <h3 class="proyecto-name">{{ proyecto.nombre }}</h3>
+        <p class="proyecto-description">{{ proyecto.descripcion }}</p>
+        <p class="proyecto-meta">Monto meta: {{ proyecto.montoMeta }}</p>
+        <p class="proyecto-recaudado">Monto recaudado: {{ proyecto.montoRecaudado }}</p>
+        <p class="proyecto-dates">Fecha inicio: {{ proyecto.fechaInicio | date:'mediumDate' }}</p>
+        <p class="proyecto-dates">Fecha fin: {{ proyecto.fechaFin | date:'mediumDate' }}</p>
+      </div>
+    </div>
+  </div>

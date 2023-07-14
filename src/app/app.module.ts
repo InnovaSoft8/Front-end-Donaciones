@@ -22,6 +22,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar'; // Import MatToolbarModule
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: 'Home', component: HomeComponent },
@@ -65,6 +66,7 @@ const routes: Routes = [
     MatListModule,
     FormsModule,
     MatToolbarModule,
+    CommonModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

@@ -1,0 +1,39 @@
+.proyecto-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .proyecto-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .proyecto-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .proyecto-item {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .proyecto-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .proyecto-description {
+    margin-bottom: 10px;
+  }
+  
+  .proyecto-meta,
+  .proyecto-recaudado,
+  .proyecto-dates {
+    margin-bottom: 5px;
+  }
