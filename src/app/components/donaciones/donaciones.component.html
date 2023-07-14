@@ -1,1 +1,83 @@
-<p>donaciones works!</p>
+<div class="donation-container">
+    <h2 class="donation-title">Donaciones</h2>
+    <form (ngSubmit)="registrarDonacion()" class="form">
+      <div class="form-group">
+        <label for="monto">Monto:</label>
+        <input
+          type="number"
+          id="monto"
+          name="monto"
+          [(ngModel)]="nuevaDonacion.monto"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="fechaHora">Fecha y Hora:</label>
+        <input
+          type="datetime-local"
+          id="fechaHora"
+          name="fechaHora"
+          [(ngModel)]="nuevaDonacion.fechaHora"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="idDonante">Donante:</label>
+        <select id="idDonante" name="idDonante" [(ngModel)]="nuevaDonacion.idDonante" required>
+          <option *ngFor="let donante of donantes" [value]="donante.idDonante">
+            {{ donante.nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="idProyecto">Proyecto:</label>
+        <select id="idProyecto" name="idProyecto" [(ngModel)]="nuevaDonacion.idProyecto" required>
+          <option *ngFor="let proyecto of proyectos" [value]="proyecto.idProyecto">
+            {{ proyecto.nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="idTipoDonacion">Tipo de Donación:</label>
+        <select id="idTipoDonacion" name="idTipoDonacion" [(ngModel)]="nuevaDonacion.idTipoDonacion" required>
+          <option *ngFor="let tipoDonacion of tiposDonacion" [value]="tipoDonacion.idTipoDonacion">
+            {{ tipoDonacion.descripcion }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="donation-button">Registrar Donación</button>
+      <p *ngIf="error" class="error">{{ error }}</p>
+    </form>
+  
+    <!-- Mostrar la lista de donaciones -->
+    <h3 class="donation-list-title">Lista de Donaciones</h3>
+    <table class="donation-table">
+      <thead>
+        <tr>
+          <th>Monto</th>
+          <th>Fecha y Hora</th>
+          <th>Donante</th>
+          <th>Proyecto</th>
+          <th>Tipo de Donación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let donacion of donaciones" class="donation-item">
+          <td>{{ donacion.monto }}</td>
+          <td>{{ donacion.fechaHora }}</td>
+          <td>{{ obtenerNombreDonante(donacion.idDonante) }}</td>
+          <td>{{ obtenerNombreProyecto(donacion.idProyecto) }}</td>
+          <td>{{ obtenerNombreTipoDonacion(donacion.idTipoDonacion) }}</td>
+          <td>
+            <button
+              (click)="eliminarDonacion(donacion.idDonacion)"
+              class="delete-button"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

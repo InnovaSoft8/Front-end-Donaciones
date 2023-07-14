@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { TipoDonacion } from '../models/tipo-donacion';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TipoDonacionService {
   private apiUrl = 'http://localhost:8080/tipo-donaciones'; // Reemplaza con la URL de tu API
@@ -13,7 +13,7 @@ export class TipoDonacionService {
 
   // Obtener todos los tipos de donación
   getTiposDonacion(): Observable<TipoDonacion[]> {
-    return this.http.get<TipoDonacion[]>(`${this.apiUrl}/tipos-donacion`);
+    return this.http.get<TipoDonacion[]>(this.apiUrl);
   }
 
   // Obtener un tipo de donación por su ID
@@ -23,7 +23,10 @@ export class TipoDonacionService {
 
   // Registrar un nuevo tipo de donación
   registrarTipoDonacion(tipoDonacion: TipoDonacion): Observable<TipoDonacion> {
-    return this.http.post<TipoDonacion>(`${this.apiUrl}/tipos-donacion`, tipoDonacion);
+    return this.http.post<TipoDonacion>(
+      `${this.apiUrl}/tipos-donacion`,
+      tipoDonacion
+    );
   }
 
   // Eliminar un tipo de donación por su ID

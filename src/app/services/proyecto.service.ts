@@ -13,7 +13,7 @@ export class ProyectoService {
 
   // Obtener todos los proyectos
   getProyectos(): Observable<Proyecto[]> {
-    return this.http.get<Proyecto[]>(`${this.apiUrl}/proyectos`);
+    return this.http.get<Proyecto[]>(this.apiUrl);
   }
 
   // Obtener un proyecto por su ID
