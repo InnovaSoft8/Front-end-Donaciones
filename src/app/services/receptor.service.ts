@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Receptor } from '../models/receptor';
+import { Pais } from '../models/pais';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +12,26 @@ export class ReceptorService {
 
   constructor(private http: HttpClient) {}
 
-  // Obtener todos los receptores
   getReceptores(): Observable<Receptor[]> {
-    return this.http.get<Receptor[]>(`${this.apiUrl}/receptores`);
+    return this.http.get<Receptor[]>(this.apiUrl);
   }
 
-  // Obtener un receptor por su ID
-  getReceptor(id: number): Observable<Receptor> {
-    return this.http.get<Receptor>(`${this.apiUrl}/receptores/${id}`);
+  registrarReceptor(receptor: Receptor): Observable<any> {
+    return this.http.post(this.apiUrl, receptor);
   }
 
-  // Registrar un nuevo receptor
-  registrarReceptor(receptor: Receptor): Observable<Receptor> {
-    return this.http.post<Receptor>(`${this.apiUrl}/receptores`, receptor);
+  eliminarReceptor(id: number): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url);
   }
 
-  // Eliminar un receptor por su ID
-  eliminarReceptor(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/receptores/${id}`);
+  getPaises(): Observable<Pais[]> {
+    const url = 'http://localhost:8080/paises'; // Replace with your API URL for getting countries
+    return this.http.get<Pais[]>(url);
+  }
+
+  modificarReceptor(id: number, receptor: Receptor): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put(url, receptor);
   }
 }

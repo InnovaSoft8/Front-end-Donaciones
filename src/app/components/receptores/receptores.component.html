@@ -1,1 +1,120 @@
-<p>receptores works!</p>
+<div class="donation-container">
+    <h2 class="donation-title">Receptores</h2>
+    <form (ngSubmit)="registrarReceptor()" class="form">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="nuevoReceptor.nombre"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input
+          type="text"
+          id="direccion"
+          name="direccion"
+          [(ngModel)]="nuevoReceptor.direccion"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo Electrónico:</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          [(ngModel)]="nuevoReceptor.correoElectronico"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input
+          type="text"
+          id="telefono"
+          name="telefono"
+          [(ngModel)]="nuevoReceptor.telefono"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="pais">País:</label>
+        <select id="pais" name="pais" [(ngModel)]="nuevoReceptor.idPais" required>
+          <option *ngFor="let pais of paises" [value]="pais.idPais">
+            {{ pais.nombre }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="donation-button">Registrar Receptor</button>
+      <p *ngIf="error" class="error">{{ error }}</p>
+    </form>
+  
+    <!-- Agregar el campo de búsqueda -->
+    <div class="search-container">
+      <label for="busqueda" class="search-label">Buscar:</label>
+      <input
+        type="text"
+        id="busqueda"
+        name="busqueda"
+        [(ngModel)]="busqueda"
+        (input)="filtrarReceptores()"
+        class="search-input"
+      />
+    </div>
+  
+    <!-- Mostrar la lista de receptores -->
+    <h3 class="donation-list-title">Lista de Receptores</h3>
+    <table class="donation-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Correo Electrónico</th>
+          <th>Teléfono</th>
+          <th>País</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="!busqueda; else receptoresFiltradosBlock">
+          <tr *ngFor="let receptor of receptores" class="donation-item">
+            <td>{{ receptor.nombre }}</td>
+            <td>{{ receptor.direccion }}</td>
+            <td>{{ receptor.correoElectronico }}</td>
+            <td>{{ receptor.telefono }}</td>
+            <td>{{ obtenerNombrePais(receptor.idPais) }}</td>
+            <td>
+              <button
+                (click)="eliminarReceptor(receptor.idReceptor)"
+                class="delete-button"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-template #receptoresFiltradosBlock>
+          <tr *ngFor="let receptor of receptoresFiltrados" class="donation-item">
+            <td>{{ receptor.nombre }}</td>
+            <td>{{ receptor.direccion }}</td>
+            <td>{{ receptor.correoElectronico }}</td>
+            <td>{{ receptor.telefono }}</td>
+            <td>{{ obtenerNombrePais(receptor.idPais) }}</td>
+            <td>
+              <button
+                (click)="eliminarReceptor(receptor.idReceptor)"
+                class="delete-button"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+  
